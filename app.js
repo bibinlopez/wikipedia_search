@@ -24,7 +24,11 @@ const fetchPages = async (searchValue) => {
     const response = await fetch(`${url}${searchValue}`)
     const data = await response.json()
     const results = data.query.search
-    // renderResults(results)
+    if (results.length < 1) {
+      resultDOM.innerHTML =
+        '<div class="error">no matching results. Please try again</div>'
+    }
+    renderResults(results)
     console.log(results)
   } catch (error) {
     resultDOM.innerHTML = '<div class="error">there was an error...</div>'
