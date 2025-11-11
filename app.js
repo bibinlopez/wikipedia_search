@@ -11,4 +11,10 @@ formDOM.addEventListener("submit", (e) => {
       '<div class="error">please enter valid search term</div>'
     return
   }
+  fetchPages(value)
+  inputDOM.value = ""
 })
+
+const fetchPages = async (searchValue) => {
+  console.log(searchValue)
+}
