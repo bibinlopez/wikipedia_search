@@ -6,5 +6,9 @@ formDOM.addEventListener("submit", (e) => {
   e.preventDefault()
   const value = inputDOM.value
 
-  console.log(value)
+  if (!value) {
+    resultDOM.innerHTML =
+      '<div class="error">please enter valid search term</div>'
+    return
+  }
 })
