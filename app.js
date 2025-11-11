@@ -29,8 +29,24 @@ const fetchPages = async (searchValue) => {
         '<div class="error">no matching results. Please try again</div>'
     }
     renderResults(results)
-    console.log(results)
   } catch (error) {
     resultDOM.innerHTML = '<div class="error">there was an error...</div>'
   }
+}
+
+const renderResults = (list) => {
+  const cardList = list
+    .map((item) => {
+      const { title, snippet, pageid: pageId } = item
+      console.log("this is page id ", pageId)
+
+      console.log(item)
+      return `<a href="http://en.wikipedia.org/?curid=${pageId}" target="_blank">
+            <h4>${title}</h4>
+            <p> ${snippet}
+            </p>
+          </a>`
+    })
+    .join("")
+  resultDOM.innerHTML = `<div class="articles">${cardList}</div>`
 }
